@@ -10,7 +10,6 @@ obj-y     +=  oppo_healthinfo/
 #endif /* VENDOR_EDIT */
 #Liang.Zhang@TECH.Storage.Stability.OPPO_SHUTDOWN_DETECT, 2019/04/28, Add for shutdown detect
 obj-$(CONFIG_OPPO_SHUTDOWN_DETECT)  +=  oppo_shutdown_detect/
-obj-$(CONFIG_OPPO_HYPNUS)       +=  oppo_hypnus/
 #Kun.Hu@TECH.BSP.Stability.PHOENIX_PROJECT 2019/06/15, Add for PHOENIX_PROJECT
 obj-$(CONFIG_OPPO_PHOENIX)     +=  oppo_phoenix/
 #endif /* VENDOR_EDIT */
