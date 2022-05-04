@@ -424,6 +424,7 @@ void uao_thread_switch(struct task_struct *next)
 			asm(ALTERNATIVE("nop", SET_PSTATE_UAO(0), ARM64_HAS_UAO));
 	}
 }
+
 /*
  * Force SSBS state on context-switch, since it may be lost after migrating
  * from a CPU which treats the bit as RES0 in a heterogeneous system.
@@ -441,7 +442,7 @@ static void ssbs_thread_switch(struct task_struct *next)
 
 	/* If the mitigation is enabled, then we leave SSBS clear. */
 	if ((arm64_get_ssbd_state() == ARM64_SSBD_FORCE_ENABLE) ||
-			test_tsk_thread_flag(next, TIF_SSBD))
+	    test_tsk_thread_flag(next, TIF_SSBD))
 		return;
 
 	if (compat_user_mode(regs))

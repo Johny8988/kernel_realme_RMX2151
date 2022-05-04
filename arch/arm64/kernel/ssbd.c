@@ -11,6 +11,7 @@
 
 #include <asm/compat.h>
 #include <asm/cpufeature.h>
+
 static void ssbd_ssbs_enable(struct task_struct *task)
 {
 	u64 val = is_compat_thread(task_thread_info(task)) ?
