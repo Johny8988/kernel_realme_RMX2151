@@ -261,7 +261,7 @@ struct fsg_common;
 struct fsg_common {
 	struct usb_gadget	*gadget;
 	struct usb_composite_dev *cdev;
-	struct fsg_dev		*fsg, *new_fsg;
+	struct fsg_dev		*fsg;
 	wait_queue_head_t	io_wait;
 	wait_queue_head_t	fsg_wait;
 
@@ -2298,8 +2298,6 @@ static int fsg_set_alt(struct usb_function *f, unsigned intf, unsigned alt)
 	common->bulk_out_maxpacket = usb_endpoint_maxp(fsg->bulk_out->desc);
 	clear_bit(IGNORE_BULK_OUT, &fsg->atomic_bitflags);
 
-
-	fsg->common->new_fsg = fsg;
 	__raise_exception(fsg->common, FSG_STATE_CONFIG_CHANGE, fsg);
 	return USB_GADGET_DELAYED_STATUS;
 
@@ -2327,7 +2325,6 @@ static void fsg_disable(struct usb_function *f)
 		fsg->bulk_out_enabled = 0;
 	}
 
-	fsg->common->new_fsg = NULL;
 	__raise_exception(fsg->common, FSG_STATE_CONFIG_CHANGE, NULL);
 }
 
