@@ -571,7 +571,6 @@ struct sched_entity {
 #ifdef VENDOR_EDIT
 
 //cuixiaogang@swdp.shanghai, 2018/3/18, export some symbol
-extern bool sched_boost(void);
 extern int sched_set_updown_migrate(unsigned int up_pct, unsigned int down_pct);
 extern int sched_get_updown_migrate(unsigned int *up_pct, unsigned int *down_pct);
 #endif /* VENDOR_EDIT */
@@ -596,7 +595,6 @@ static inline unsigned int sched_get_cpu_util(int cpu)
 
 #ifdef VENDOR_EDIT
 //cuixiaogang@swdp.shanghai, 2018/3/18, export some symbol
-extern bool sched_boost(void);
 extern int sched_set_updown_migrate(unsigned int up_migrate,unsigned int down_migrate);
 extern int sched_get_updown_migrate(unsigned int *up_migrate,unsigned int *down_migrate);
 #endif /* VENDOR_EDIT */
